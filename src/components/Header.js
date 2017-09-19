@@ -1,8 +1,16 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import React from 'react';
 
-const Header = () => (
+const Header = props => props.personId ? (
+    <TouchableOpacity onPress={() => {
+        props.setPerson(null)
+    }}>
+        <View style={styles.header}>
+            <Text style={styles.title}>Back</Text>
+        </View>
+    </TouchableOpacity>
+) : (
     <View style={styles.header}>
         <Text style={styles.title}>Star Wars App</Text>
     </View>
