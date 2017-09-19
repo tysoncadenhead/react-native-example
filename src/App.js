@@ -1,14 +1,12 @@
-import { Text, View } from 'react-native';
-
+import Header from './components/Header';
+import Listing from './screens/Listing';
 import React from 'react';
+import { View } from 'react-native';
 
 const App = () => (
-    <View style={{
-        marginTop: 100
-    }}>
-        <Text style={{
-            textAlign: 'center'
-        }}>Star Wars App</Text>
+    <View>
+        <Header />
+        <Listing />
     </View>
 );
 
