@@ -1,52 +1,31 @@
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { ScrollView, TouchableOpacity, View } from 'react-native';
+import styled, { withTheme } from 'styled-components/native';
 
+import ListItem from '../components/ListItem';
+import Name from '../components/Name';
+import ProfileImage from '../components/ProfileImage';
 import React from 'react';
 import withPeople from '../hocs/withPeople';
 
 const Listing = props => (
-    <View style={styles.container}>
+    <View>
         <ScrollView>
             {props.people.map(person => (
                 <TouchableOpacity key={person.id} onPress={() => {
                     props.setPerson(person.id);
                 }}>
-                    <View style={styles.listItem}>
-                        <Image style={styles.profileImage} source={{
+                    <ListItem>
+                        <ProfileImage source={{
                             uri: person.image
                         }} />
                         <View>
-                            <Text style={styles.name}>{person.name}</Text>
+                            <Name>{person.name}</Name>
                         </View>
-                    </View>
+                    </ListItem>
                 </TouchableOpacity>
             ))}
         </ScrollView>
     </View>
 );
-
-const styles = StyleSheet.create({
-    listItem: {
-        backgroundColor: '#EEEEEE',
-        padding: 12,
-        marginBottom: 1,
-        flexDirection: 'row',
-        alignItems: 'center'
-    },
-    profileImage: {
-        width: 50,
-        height: 50
-    },
-    name: {
-        paddingLeft: 12,
-        fontSize: 18,
-        color: '#666',
-        fontWeight: 'bold'
-    },
-    bio: {
-        paddingLeft: 12,
-        paddingTop: 12,
-        paddingRight: 50
-    }
-});
 
 export default withPeople(Listing);

@@ -1,6 +1,9 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
-
+import Bio from '../components/Bio';
+import ListItem from '../components/ListItem';
+import Name from '../components/Name';
+import ProfileImage from '../components/ProfileImage';
 import React from 'react';
+import { View } from 'react-native';
 import withPeople from '../hocs/withPeople';
 
 const Details = props => {
@@ -9,41 +12,16 @@ const Details = props => {
     )[0];
 
     return (
-        <View key={person.id} style={styles.listItem}>
-            <Image style={styles.profileImage} source={{
+        <ListItem key={person.id}>
+            <ProfileImage source={{
                 uri: person.image
             }} />
             <View>
-                <Text style={styles.name}>{person.name}</Text>
-                <Text style={styles.bio}>{person.bio}</Text>
+                <Name>{person.name}</Name>
+                <Bio>{person.bio}</Bio>
             </View>
-        </View>
+        </ListItem>
     );
 }
-
-const styles = StyleSheet.create({
-    listItem: {
-        backgroundColor: '#EEEEEE',
-        padding: 12,
-        marginBottom: 1,
-        flexDirection: 'row'
-    },
-    profileImage: {
-        width: 50,
-        height: 50,
-        marginTop: 36
-    },
-    name: {
-        paddingLeft: 12,
-        fontSize: 18,
-        color: '#666',
-        fontWeight: 'bold'
-    },
-    bio: {
-        paddingLeft: 12,
-        paddingTop: 12,
-        paddingRight: 50
-    }
-});
 
 export default withPeople(Details);

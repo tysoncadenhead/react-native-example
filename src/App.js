@@ -2,7 +2,9 @@ import Details from './screens/Details';
 import Header from './components/Header';
 import Listing from './screens/Listing';
 import React from 'react';
+import { ThemeProvider } from 'styled-components/native';
 import { View } from 'react-native';
+import theme from './data/theme';
 
 class App extends React.Component {
 
@@ -24,14 +26,16 @@ class App extends React.Component {
 
     render () {
         return (
-            <View>
-                <Header {...this.state} setPerson={this.setPerson} />
-                {this.state.personId ? (
-                    <Details {...this.state} />
-                ) : (
-                    <Listing setPerson={this.setPerson} />
-                )}
-            </View>
+            <ThemeProvider theme={theme}>
+                <View>
+                    <Header {...this.state} setPerson={this.setPerson} />
+                    {this.state.personId ? (
+                        <Details {...this.state} />
+                    ) : (
+                        <Listing setPerson={this.setPerson} />
+                    )}
+                </View>
+            </ThemeProvider>
         );
     }
 
