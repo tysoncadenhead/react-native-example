@@ -1,6 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import React from 'react';
+import { path } from 'ramda';
 import styled from 'styled-components/native';
 
 const Header = props => props.personId ? (
@@ -18,14 +19,14 @@ const Header = props => props.personId ? (
 );
 
 const Container = styled.View`
-    background-color: ${props => props.theme.headerColor};
+    background-color: ${path(['theme', 'headerColor'])};
     padding-top: 32;
     padding-bottom: 12;
 `;
 
 const Title = styled.Text`
     text-align: center;
-    color: ${props => props.theme.textInverse};
+    color: ${path(['theme', 'textInverse'])};
 `;
 
 export default Header;

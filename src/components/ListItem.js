@@ -1,7 +1,8 @@
+import { path } from 'ramda'
 import styled from 'styled-components/native';
 
 const ListItem = styled.View`
-    background-color: ${props => props.theme.backgroundColor};
+    background-color: ${path(['theme', 'backgroundColor'])};
     padding-left: 12;
     padding-right: 12;
     padding-bottom: 12;

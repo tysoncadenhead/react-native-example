@@ -4,24 +4,23 @@ import Name from '../components/Name';
 import ProfileImage from '../components/ProfileImage';
 import React from 'react';
 import { View } from 'react-native';
+import { compose } from 'ramda';
 import withPeople from '../hocs/withPeople';
+import withPerson from '../hocs/withPerson';
 
-const Details = props => {
-    const person = props.people.filter(person => 
-        person.id === props.personId
-    )[0];
+const Details = props => (
+    <ListItem key={props.person.id}>
+        <ProfileImage source={{
+            uri: props.person.image
+        }} />
+        <View>
+            <Name>{props.person.name}</Name>
+            <Bio>{props.person.bio}</Bio>
+        </View>
+    </ListItem>
+);
 
-    return (
-        <ListItem key={person.id}>
-            <ProfileImage source={{
-                uri: person.image
-            }} />
-            <View>
-                <Name>{person.name}</Name>
-                <Bio>{person.bio}</Bio>
-            </View>
-        </ListItem>
-    );
-}
-
-export default withPeople(Details);
+export default compose(
+    withPeople,
+    withPerson
+)(Details);
