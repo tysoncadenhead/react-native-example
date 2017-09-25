@@ -1,31 +1,31 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import React from 'react';
+import styled from 'styled-components/native';
 
 const Header = props => props.personId ? (
     <TouchableOpacity onPress={() => {
         props.setPerson(null)
     }}>
-        <View style={styles.header}>
-            <Text style={styles.title}>Back</Text>
-        </View>
+        <Container>
+            <Title>Back</Title>
+        </Container>
     </TouchableOpacity>
 ) : (
-    <View style={styles.header}>
-        <Text style={styles.title}>Star Wars App</Text>
-    </View>
+    <Container>
+        <Title>Star Wars App</Title>
+    </Container>
 );
 
-const styles = StyleSheet.create({
-    header: {
-        backgroundColor: '#666666',
-        paddingTop: 32,
-        paddingBottom: 12
-    },
-    title: {
-        textAlign: 'center',
-        color: '#FFFFFF'
-    }
-})
+const Container = styled.View`
+    background-color: ${props => props.theme.headerColor};
+    padding-top: 32;
+    padding-bottom: 12;
+`;
+
+const Title = styled.Text`
+    text-align: center;
+    color: ${props => props.theme.textInverse};
+`;
 
 export default Header;

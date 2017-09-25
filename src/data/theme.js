@@ -1,4 +1,8 @@
+const dark = '#666666';
+
 export default {
     backgroundColor: '#EEEEEE',
-    primaryColor: '#666666'
+    primaryColor: dark,
+    headerColor: dark,
+    textInverse: '#FFFFFF'
 };
